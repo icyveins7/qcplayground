@@ -38,6 +38,8 @@ def splitH_realimag(H):
 
 splitH = splitH_realimag(H)
 print(splitH)
+splitH_sqr = splitH.H * splitH
+print(splitH_sqr)
 
 
 
