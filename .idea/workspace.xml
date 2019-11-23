@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffab0bb1-ed01-4814-9022-b3af56457315" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/qMUDclasses.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run_qMUDClasses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pq_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hardcodedtests_qpsk.py" beforeDir="false" afterPath="$PROJECT_DIR$/hardcodedtests_qpsk.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_qMUDClasses">
+  <component name="RunManager" selected="Python.pq_test">
     <configuration name="hardcodedtests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="qcplayground" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,6 +73,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hardcodedtests_qpsk.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pq_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="qcplayground" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pq_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -127,6 +146,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pq_test" />
         <item itemvalue="Python.run_qMUDClasses" />
         <item itemvalue="Python.hardcodedtests_qpsk" />
         <item itemvalue="Python.hardcodedtests" />
