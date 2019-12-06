@@ -7,10 +7,14 @@ eng = MainEngine(circuit_backend)  # create a default compiler (the back-end is 
 qubit = eng.allocate_qubit()  # allocate a quantum register with 1 qubit
 qureg = eng.allocate_qureg(5)
 
+# how about a list of qubits?
+lq = (qureg[0], qureg[1], qureg[3], qureg[4])
+
 
 H | qubit  # apply a Hadamard gate
 Measure | qubit  # measure the qubit
 C(X,3) | (qureg[0],qureg[1],qureg[2],qureg[3])
+C(X,3) | lq
 
 eng.flush()  # flush all gates (and execute measurements)
 print("Measured {}".format(int(qubit)))  # converting a qubit to int or bool gives access to the measurement result
