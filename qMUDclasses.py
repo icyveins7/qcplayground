@@ -44,11 +44,19 @@ class DHAOracle:
                 
             # Condition 1. All remaining bits are 1. E.g. 11111, 01111 etc.
             elif np.all(delta_bin[idx:]):
-                self.gatesList.append(tuple([self.valreg[prefix[i]] for i in range(len(prefix))]) + tuple([self.valreg[i] for i in range(idx, len(delta_bin[idx:])+1)]) + tuple([self.refreg[cidx]]))
+                self.gatesList.append(tuple([self.valreg[prefix[i]] for i in range(len(prefix))]) + tuple([self.valreg[i] for i in range(idx, len(delta_bin))]) + tuple([self.refreg[cidx]]))
                 
-                print('Exited at idx ' + str(idx))
+                print('Exited at idx ' + str(idx)) # DEBUG
                 
-                idx = len(delta_bin) # end the loop
+                idx = len(delta_bin) # end the loop, early stopping
+            
+            # Condition 2. Current bit is 1, rest are 0. E.g. 01000 etc.
+            elif np.all(np.logical_not(delta_bin[idx+1:])) and delta_bin[idx] == 1:
+                self.gatesList.append(tuple([self.valreg[prefix[i]] for i in range(len(prefix))]) + tuple([self.valreg[idx]]) + tuple([self.refreg[cidx]]))
+                
+                print('Exited at idx ' + str(idx)) # DEBUG
+                
+                idx = len(delta_bin) # early stopping
             
             else:
                 print('not yet implemented')

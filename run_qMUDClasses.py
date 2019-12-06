@@ -3,9 +3,13 @@ import scipy as sp
 import scipy.signal as sps
 import qMUDclasses as qm
 
-delta = 15
+#delta_list = np.arange(1,32)
+delta_list = np.array([2])
 
-oracle = qm.DHAOracle(delta, 5)
-print(oracle.delta_bin)
-oracle.makeGates()
-oracle.showGates()
+for i in range(len(delta_list)):
+    delta = delta_list[i]
+    oracle = qm.DHAOracle(delta, 5)
+    print(oracle.delta_bin)
+    oracle.makeGates()
+    oracle.showGates()
+    
