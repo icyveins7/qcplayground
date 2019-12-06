@@ -6,8 +6,8 @@
     "gate_shadow": true,
     "gates": {
         "AllocateQubitGate": {
-            "allocate_at_zero": false,
-            "draw_id": false,
+            "allocate_at_zero": true,
+            "draw_id": true,
             "height": 0.15,
             "offset": 0.1,
             "pre_offset": 0.1,
