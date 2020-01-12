@@ -3,24 +3,30 @@ import scipy as sp
 import matplotlib.pyplot as plt
 import scipy.signal as sps
 from projectq import MainEngine  # import the main compiler engine
-from projectq.ops import C, X, H, Measure  # import the operations we want to perform (Hadamard and measurement)
+from projectq.ops import C, X, H, Measure, BarrierGate  # import the operations we want to perform (Hadamard and measurement)
 from projectq.backends import CircuitDrawer
 
 class DHAOracle:
-    def __init__(self, delta, numBits):
+    def __init__(self, delta, numBits, ancillaBit=None):
         self.C = C
         self.delta = delta
         self.numBits = numBits
         self.delta_bin = np.binary_repr(delta, numBits)
         self.delta_bin = [int(i) for i in self.delta_bin]
         self.gatesList = []
+        self.reverseGatesList = []
         
         self.circuit_drawer = CircuitDrawer()
         self.diag_eng = MainEngine(self.circuit_drawer)
         
         self.valreg = self.diag_eng.allocate_qureg(self.numBits)
         self.refreg = self.diag_eng.allocate_qureg(self.numBits)
-        
+
+        if (ancillaBit is None):
+            self.ancilla = self.diag_eng.allocate_qureg(1)
+        else:
+            self.ancilla = ancillaBit
+
         # old qiskit ver
 #        self.valreg = QuantumRegister(self.numBits, 'val')
 #        self.refreg = QuantumRegister(self.numBits, 'reg')
@@ -71,7 +77,23 @@ class DHAOracle:
             
             # implement the gate
             self.C(X,len(self.gatesList[i])-1) | self.gatesList[i]
-            
+            # self.C(X, len(self.gatesList[i]) - 1) | self.gatesList[i]
+
+        # debug, cant seem to add another gate?
+        self.C(X, 1) | (self.refreg[1], self.ancilla[0])
+
+        # # implement the centre toffoli
+        # print('Not yet implemented centre toffoli, just for testing..')
+        # self.C(X, sum(self.delta_bin)) | (self.refreg[1], self.ancilla)
+        #
+        #
+        #
+        # implement the reverse of the toffoli gates to complete the oracle
+        # for i in range(len(self.gatesList)-1, -1, -1):
+        # for i in range(len(self.gatesList)):
+        #     print(self.gatesList[i])
+        #
+        #     self.C(X,len(self.gatesList[i])-1) | self.gatesList[i]
             
         # flush gates
         self.diag_eng.flush()
