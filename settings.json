@@ -25,8 +25,8 @@
             "width": 1.8
         },
         "HGate": {
-            "offset": 0.3,
-            "pre_offset": 0.1,
+            "offset": 0.0,
+            "pre_offset": 0.25,
             "width": 0.5
         },
         "MeasureGate": {
@@ -76,9 +76,16 @@
         },
         "XGate": {
             "height": 0.35,
-            "offset": 0.1,
+            "offset": 0.0,
+            "pre_offset": 0.5,
             "width": 0.35
-        }
+        },
+		"BarrierGate": {
+			"height": 0.35,
+            "offset": 0.0,
+            "pre_offset": 0.0,
+            "width": 0.35
+		}
     },
     "lines": {
         "double_classical": true,

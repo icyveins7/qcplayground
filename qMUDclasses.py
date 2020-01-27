@@ -107,13 +107,15 @@ class DHAOracle:
             # implement the gate
             self.C(X,len(self.gatesList[i])-1) | self.gatesList[i]
             
+        # Barrier for neatness?
+        self.Barrier | (self.valreg, self.refreg, self.ancilla)   
+            
         # implement X gates on 0 bits
         for i in range(len(delta_bin)):
             if (delta_bin[i] == 0):
                 self.X | self.refreg[i]
                 
-        # Barrier for neatness?
-        self.Barrier | (self.valreg, self.refreg, self.ancilla)
+        
                 
         # implement Hadamard on ancilla
         self.H | self.ancilla
@@ -125,14 +127,16 @@ class DHAOracle:
         # implement Hadamard on ancilla
         self.H | self.ancilla
         
-        # Barrier for neatness?
-        self.Barrier | (self.valreg, self.refreg, self.ancilla)
+        
         
         # implement X gates on 0 bits
         for i in range(len(delta_bin)):
             if (delta_bin[i] == 0):
                 self.X | self.refreg[i]
                 
+        # Barrier for neatness?
+        self.Barrier | (self.valreg, self.refreg, self.ancilla)
+        
         # implement the gates
         for i in range(len(self.gatesList)-1, -1, -1):
             print(self.gatesList[i])
@@ -152,6 +156,7 @@ class DHAOracle:
             # fix the barrier text to be vertical
             text2print = text2print.replace("Barrier", "\\rotatebox{90}{Barrier}")
             
+        print('\n')
         print(text2print)
         
         return text2print
